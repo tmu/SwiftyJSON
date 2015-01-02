@@ -15,19 +15,15 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/SwiftyJSON/SwiftyJSON"
   s.license      = { :type => "MIT", :file => "LICENSE" }
-  s.author       = { 'Ruoyu Fu' }
+  s.author       = { "Ruoyu Fu" => "r@foo.bar" }
 
   s.platform     = :ios
   s.ios.deployment_target = "8.0"
-  #s.osx.deployment_target = "10.9"
-
 
   s.source       = { :git => "/Users/teemu/all/flancer/protos/Flancer/SwiftyJSON", :tag => s.version.to_s }
 
   s.source_files  = "Source/*.swift"
   s.requires_arc = true
 
-  # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # s.dependency "JSONKit", "~> 1.4"
 
 end
