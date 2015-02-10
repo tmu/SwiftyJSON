@@ -2,6 +2,16 @@
 
 SwiftyJSON makes it easy to deal with JSON data in Swift.
 
+## Note: Xcode 6.3 Beta and Swift 1.2 support
+
+This is a temporary branch by @tmu to support SwiftyJSON on Xcode 6.3 Beta and Swift 1.2. It fixes compilation errors and warnings. It is based on the master branch of SwiftyJSON.
+
+To use it on your project, replace SwiftyJSON pod definition in your Podfile with
+
+    pod 'SwiftyJSON', :git => 'https://github.com/tmu/SwiftyJSON.git', :branch => 'xcode6.3-fixes'
+
+# Contents
+
 1. [Why is the typical JSON handling in Swift NOT good](#why-is-the-typical-json-handling-in-swift-not-good)
 1. [Requirements](#requirements)
 1. [Integration](#integration)
@@ -16,7 +26,7 @@ SwiftyJSON makes it easy to deal with JSON data in Swift.
 	- [Raw object](#raw-object)
 	- [Literal convertibles](#literal-convertibles)
 1. [Work with Alamofire](#work-with-alamofire)
-	
+
 ##Why is the typical JSON handling in Swift NOT good?
 Swift is very strict about types. But although explicit typing is good for saving us from mistakes, it becomes painful when dealing with JSON and other areas that are, by nature, implicit about types.
 
@@ -32,7 +42,7 @@ if let statusesArray = jsonObject as? NSArray{
         if let user = aStatus["user"] as? NSDictionary{
             if let userName = user["name"] as? NSString{
                 //Finally We Got The Name
-                
+
             }
         }
     }
@@ -91,7 +101,7 @@ You can use [Carthage](https://github.com/Carthage/Carthage) to install `SwiftyJ
 `github "SwiftyJSON/SwiftyJSON" >= 2.1.2` to your `Cartfile`
 
 ####CocoaPods
-CocoaPods beta release now supports for Swift. 
+CocoaPods beta release now supports for Swift.
 ```ruby
 pod 'SwiftyJSON', '2.1.3'
 ```
@@ -101,7 +111,7 @@ Note that it needs you to install CocoaPods pre-released version, and requires y
 ```
 ####Manually
 
-To use this library in your project manually you may:  
+To use this library in your project manually you may:
 
 1. for Projects, just drag SwiftyJSON.swift to the project tree
 2. for Workspaces, include the whole SwiftyJSON.xcodeproj (as suggested by @garnett)
@@ -128,13 +138,13 @@ let name = json["name"].stringValue
 ```swift
 //With an array like path to the element
 let path = [1,"list",2,"name"]
-let name = json[path].string 
+let name = json[path].string
 //Just the same
 let name = json[1]["list"][2]["name"].string
 ```
 ```swift
 //With a literal array to the element
-let name = json[1,"list",2,"name"].string 
+let name = json[1,"list",2,"name"].string
 //Just the same
 let name = json[1]["list"][2]["name"].string
 ```
@@ -161,7 +171,7 @@ for (index: String, subJson: JSON) in json {
 Use subscript to get/set value in Array or Dicitonary
 
 *  If json is an array, the app may crash with "index out-of-bounds."
-*  If json is a dictionary, it will get `nil` without the reason. 
+*  If json is a dictionary, it will get `nil` without the reason.
 *  If json is not an array or a dictionary, the app may crash with the wrong selector exception.
 
 It will never happen in SwiftyJSON.
